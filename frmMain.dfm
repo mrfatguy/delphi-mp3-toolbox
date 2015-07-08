@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 84
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'pnMP3 - panel narz'#281'dziowy MP3, wersja 2.2'
+  Caption = 'MP3 Toolbox 2.2'
   ClientHeight = 617
   ClientWidth = 585
   Color = clBtnFace
@@ -27,7 +27,7 @@ object MainForm: TMainForm
     Top = 546
     Width = 220
     Height = 13
-    Caption = 'Liczba wszystkich plik'#243'w w folderze: 0'
+    Caption = 'Number of files in folder: 0'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -40,8 +40,7 @@ object MainForm: TMainForm
     Top = 537
     Width = 78
     Height = 72
-    Hint = 'O programie#Kliknij, aby wy'#347'wietli'#263' informacje o programie.'
-    Caption = 'O programie'
+    Caption = 'About'
     TabOrder = 8
     OnClick = imgAboutClick
     Glyph.Data = {
@@ -236,7 +235,7 @@ object MainForm: TMainForm
     TabOrder = 0
     OnChange = pcMainChange
     object tsMain: TTabSheet
-      Caption = 'Tagi i nazwa pliku'
+      Caption = 'Tags and file name'
       object Label6: TLabel
         Left = 4
         Top = 4
@@ -244,9 +243,8 @@ object MainForm: TMainForm
         Height = 39
         AutoSize = False
         Caption = 
-          'Tutaj mo'#380'esz zmienia'#263' tagi ID3Tag oraz generowa'#263' nazw'#281' pliku na ' +
-          'podstawie jego zawarto'#347'ci. Dodatkowe narz'#281'dzia s'#261' dost'#281'- pne w m' +
-          'enu podr'#281'cznym listy plik'#243'w, po lewej stronie okna.'
+          'Here you can change ID3Tag fields and generate filename basing on ID3Tag. Additional' +
+          'tools are accessible through context menu of file lists on left window site.'
         WordWrap = True
       end
       object gbParameters: TGroupBox
@@ -254,21 +252,21 @@ object MainForm: TMainForm
         Top = 46
         Width = 306
         Height = 221
-        Caption = ' Parametry zamiany '
+        Caption = ' Change parameters '
         TabOrder = 0
         object lblTitle: TLabel
           Left = 6
           Top = 16
           Width = 66
           Height = 13
-          Caption = 'Tytu'#322' utworu:'
+          Caption = 'Title:'
         end
         object lblTime: TLabel
           Left = 56
           Top = 137
           Width = 66
           Height = 13
-          Caption = 'Czas trwania:'
+          Caption = 'Length:'
         end
         object Bevel2: TBevel
           Left = 6
@@ -320,9 +318,9 @@ object MainForm: TMainForm
           Top = 176
           Width = 73
           Height = 17
-          Hint = 'Komentarz#Zaznacz, by zapami'#281'ta'#263' ten parametr.'
+          Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
-          Caption = 'Komentarz:'
+          Caption = 'Comment:'
           TabOrder = 12
         end
         object eYear: TEdit
@@ -343,9 +341,9 @@ object MainForm: TMainForm
           Top = 136
           Width = 74
           Height = 17
-          Hint = 'Rodzaj muzyki#Zaznacz, by zapami'#281'ta'#263' ten parametr.'
+          Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
-          Caption = 'Styl muzyki:'
+          Caption = 'Style:'
           TabOrder = 11
         end
         object eLength: TEdit
@@ -365,7 +363,7 @@ object MainForm: TMainForm
           Top = 153
           Width = 140
           Height = 21
-          Hint = 'Rodzaj muzyki#Obecnie nie wszystkie rodzaje s'#261' obs'#322'ugiwane!'
+          Hint = 'Not all MP3 styles are supported! Sorry...'
           Style = csDropDownList
           ItemHeight = 13
           TabOrder = 5
@@ -390,7 +388,7 @@ object MainForm: TMainForm
           Top = 96
           Width = 51
           Height = 17
-          Hint = 'Album#Zaznacz, by zapami'#281'ta'#263' ten parametr.'
+          Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
           Caption = 'Album:'
           TabOrder = 9
@@ -400,9 +398,9 @@ object MainForm: TMainForm
           Top = 56
           Width = 83
           Height = 17
-          Hint = 'Wykonawca#Zaznacz, by zapami'#281'ta'#263' ten parametr.'
+          Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
-          Caption = 'Wykonawca:'
+          Caption = 'Author:'
           TabOrder = 7
         end
         object cbYear: TCheckBox
@@ -410,9 +408,9 @@ object MainForm: TMainForm
           Top = 136
           Width = 43
           Height = 17
-          Hint = 'Rok#Zaznacz, by zapami'#281'ta'#263' ten parametr.'
+          Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
-          Caption = 'Rok:'
+          Caption = 'Year:'
           TabOrder = 10
         end
         object btnSigns1: TButton
@@ -420,9 +418,7 @@ object MainForm: TMainForm
           Top = 32
           Width = 21
           Height = 21
-          Hint = 
-            'Wielko'#347#263' liter#Kliknij prawym, aby wybra'#263' szablon zmiany. Klikni' +
-            'j lewym, aby u'#380'y'#263' go w wybranym polu.'
+          Hint = 'Right-click to pick value change scheme. Left-click to apply current scheme.'
           Caption = '...'
           PopupMenu = pmSigns
           TabOrder = 14
@@ -435,9 +431,7 @@ object MainForm: TMainForm
           Top = 73
           Width = 21
           Height = 21
-          Hint = 
-            'Wielko'#347#263' liter#Kliknij prawym, aby wybra'#263' szablon zmiany. Klikni' +
-            'j lewym, aby u'#380'y'#263' go w wybranym polu.'
+          Hint = 'Right-click to pick value change scheme. Left-click to apply current scheme.'
           Caption = '...'
           PopupMenu = pmSigns
           TabOrder = 15
@@ -450,9 +444,7 @@ object MainForm: TMainForm
           Top = 113
           Width = 21
           Height = 21
-          Hint = 
-            'Wielko'#347#263' liter#Kliknij prawym, aby wybra'#263' szablon zmiany. Klikni' +
-            'j lewym, aby u'#380'y'#263' go w wybranym polu.'
+          Hint = 'Right-click to pick value change scheme. Left-click to apply current scheme.'
           Caption = '...'
           PopupMenu = pmSigns
           TabOrder = 16
@@ -477,10 +469,10 @@ object MainForm: TMainForm
           Top = 176
           Width = 56
           Height = 17
-          Hint = #346'cie'#380'ka#Zaznacz, by zapami'#281'ta'#263' ten parametr.'
+          Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
           Alignment = taLeftJustify
-          Caption = #346'cie'#380'ka:'
+          Caption = 'Path'
           TabOrder = 13
         end
       end
@@ -489,21 +481,21 @@ object MainForm: TMainForm
         Top = 270
         Width = 306
         Height = 147
-        Caption = ' Zmie'#324'... '
+        Caption = ' Change '
         TabOrder = 1
         object lblOriginalName: TLabel
           Left = 8
           Top = 16
           Width = 114
           Height = 13
-          Caption = 'Oryginalna nazwa pliku:'
+          Caption = 'Original filename:'
         end
         object lblDestinationName: TLabel
           Left = 6
           Top = 58
           Width = 153
           Height = 13
-          Caption = 'Proponowana nazwa pliku:'
+          Caption = 'Suggested filename:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -516,10 +508,8 @@ object MainForm: TMainForm
           Top = 100
           Width = 94
           Height = 25
-          Hint = 
-            'Zmie'#324' ID3Tag#Zmienia tylko zawarto'#347#263' p'#243#322' ID3Tag w zaznaczonym pl' +
-            'iku. [Ctrl+F1]'
-          Caption = 'Zmie'#324' ID3Tag'
+          Hint = 'Change ID3Tag only, leave filename unchanged [Ctrl+F1]'
+          Caption = 'Change ID3Tag'
           TabOrder = 2
           OnClick = btnID3Click
         end
@@ -528,10 +518,8 @@ object MainForm: TMainForm
           Top = 100
           Width = 94
           Height = 25
-          Hint = 
-            'Zmie'#324' nazw'#281'#Zmienia tylko nazw'#281' zaznaczonego pliku, pozostawiaj'#261 +
-            'c oryginalny ID3Tag (je'#347'li istnieje). [Ctrl+F2]'
-          Caption = 'Zmie'#324' nazw'#281
+          Hint = 'Change filename only, leave ID3Tag unchanged [Ctrl+F2]'
+          Caption = 'Change filename'
           TabOrder = 3
           OnClick = btnFileClick
         end
@@ -540,10 +528,8 @@ object MainForm: TMainForm
           Top = 100
           Width = 94
           Height = 25
-          Hint = 
-            'Zmie'#324' wszystko#Zmienia zar'#243'wno zawarto'#347#263' ID3Tag, jak i nazw'#281' pli' +
-            'ku. [Ctrl+F3]'
-          Caption = 'Zmie'#324' wszystko'
+          Hint = 'Change both ID3Tag and filename only [Ctrl+F3]'
+          Caption = 'Change everything'
           TabOrder = 4
           OnClick = btnAllClick
         end
@@ -552,7 +538,6 @@ object MainForm: TMainForm
           Top = 32
           Width = 291
           Height = 21
-          Hint = 'Oryginalna nazwa pliku#Pierwotna nazwa pliku, przed jej zmian'#261'.'
           TabStop = False
           Color = clBtnFace
           ReadOnly = True
@@ -563,9 +548,6 @@ object MainForm: TMainForm
           Top = 74
           Width = 291
           Height = 21
-          Hint = 
-            'Proponowana nazwa pliku#Nazwa pliku zostanie zmieniona na zaprop' +
-            'onowan'#261'. Mo'#380'esz swobodnie zmienia'#263' zawarto'#347#263' tego pola.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -581,17 +563,17 @@ object MainForm: TMainForm
           Width = 174
           Height = 17
           Hint = 
-            'Szybki edytor ID3Tag#W tym trybie pracy zmiana ID3Tag powoduje a' +
-            'utomatyczne przej'#347'cie do nast'#281'pnego pliku w folderze oraz powr'#243't' +
-            ' kursora do aktualnie edytowanego pola.'
-          Caption = 'Tryb szybkiego edytora ID3Tag'
+            'Quick ID3Tag edit mode moves selection of file list to another file and returns' +
+            'focus to tag field you are editing, allowing you to quickly change the same tag' +
+            ' in many files'
+          Caption = 'Quick ID3Tag edit mode'
           TabOrder = 5
           OnClick = chbFastEditorClick
         end
       end
     end
     object tsList: TTabSheet
-      Caption = 'Lista utwor'#243'w'
+      Caption = 'File list'
       ImageIndex = 1
       object Label3: TLabel
         Left = 4
@@ -600,9 +582,9 @@ object MainForm: TMainForm
         Height = 39
         AutoSize = False
         Caption = 
-          'Na tej zak'#322'adce mo'#380'esz utworzy'#263' list'#281' wykonawc'#243'w i tytu'#322#243'w na po' +
-          'dstawie danych z ID3Tag we wszystkich plikach znajdu- j'#261'cych si'#281 +
-          ' w wybranym folderze.'
+          'Here you can build list of authors and titles of all files stored in currently sel' +
+          'ected folder. These information will be obtained from ID3Tag of each file. Warning'
+          '! This process may take some time, if you have many files in this folder...'
         WordWrap = True
       end
       object lblProgress: TLabel
@@ -619,14 +601,15 @@ object MainForm: TMainForm
         Top = 332
         Width = 49
         Height = 13
-        Caption = 'Gotowe...'
+        Caption = 'Reade...'
       end
       object lblSize: TLabel
         Left = 156
         Top = 400
         Width = 42
         Height = 13
-        Caption = 'Rozmiar:'
+        Hint = 'Double-click to copy size and length to clipboard'
+        Caption = 'Size:'
         OnDblClick = SizeAndLengthToClipboard
       end
       object lblLength: TLabel
@@ -634,7 +617,8 @@ object MainForm: TMainForm
         Top = 400
         Width = 42
         Height = 13
-        Caption = 'D'#322'ugo'#347#263':'
+        Hint = 'Double-click to copy size and length to clipboard'
+        Caption = 'Lenght:'
         OnDblClick = SizeAndLengthToClipboard
       end
       object btnDoIt: TButton
@@ -642,10 +626,7 @@ object MainForm: TMainForm
         Top = 368
         Width = 60
         Height = 25
-        Hint = 
-          'Utw'#243'rz!#Kliknij, aby utworzy'#263' list'#281' na podstawie tag'#243'w ID3Tag ws' +
-          'zystkich plik'#243'w znajduj'#261'cych si'#281' w wybranym folderze'
-        Caption = 'Utw'#243'rz!'
+        Caption = 'Go!'
         Default = True
         Enabled = False
         Font.Charset = EASTEUROPE_CHARSET
@@ -670,8 +651,8 @@ object MainForm: TMainForm
         Width = 304
         Height = 279
         Hint = 
-          'Lista utwor'#243'w i wykonawc'#243'w#Kliknij dwukrotnie wybran'#261' pozycj'#281', a' +
-          'by przej'#347#263' na pierwsz'#261' zak'#322'adk'#281', do edycji zaznaczonego pliku.'
+          'Double-click on any list item to go back to first tab and start editing ID3Tag of se' +
+          'lected item.'
         ItemHeight = 13
         TabOrder = 4
         OnClick = mListClick
@@ -682,8 +663,7 @@ object MainForm: TMainForm
         Top = 368
         Width = 60
         Height = 25
-        Hint = 'Wyczy'#347#263'!#Kliknij, aby opr'#243#380'ni'#263' list'#281' z zawarto'#347'ci'
-        Caption = 'Wyczy'#347#263'!'
+        Caption = 'Clear'
         TabOrder = 2
         OnClick = btnClearClick
       end
@@ -692,10 +672,8 @@ object MainForm: TMainForm
         Top = 368
         Width = 60
         Height = 25
-        Hint = 
-          'Kopiuj#Kliknij, aby skopiowa'#263' list'#281' do Schowka (format tekstu zw' +
-          'yk'#322'ego)'
-        Caption = 'Kopiuj'
+        Hint = 'Copy list to clipboard (plain text, no formatting)'
+        Caption = 'Copy'
         Enabled = False
         TabOrder = 1
         OnClick = btnCopyToClipboardClick
@@ -705,10 +683,8 @@ object MainForm: TMainForm
         Top = 368
         Width = 60
         Height = 25
-        Hint = 
-          'Wi'#281'cej...#Otwiera okno zaawansowanej zmiany globalnej tag'#243'w ID3T' +
-          'ag'
-        Caption = 'Wi'#281'cej...'
+        Hint = 'Open advanced ID3Tag change window'
+        Caption = 'More...'
         Enabled = False
         TabOrder = 3
         OnClick = btnMoreClick
@@ -735,7 +711,7 @@ object MainForm: TMainForm
       end
     end
     object TabSheet1: TTabSheet
-      Caption = 'Zmiana globalna'
+      Caption = 'Global changes'
       ImageIndex = 2
       object Label7: TLabel
         Left = 4
@@ -744,8 +720,8 @@ object MainForm: TMainForm
         Height = 26
         AutoSize = False
         Caption = 
-          'To narz'#281'dzie, po uruchomieniu pobierze dane z ID3Tag. Na ich pod' +
-          'stawie (i poni'#380'szych parametr'#243'w) zmieni nazwy plik'#243'w.'
+          'Here you have a tool very similar to the one on first tab (changes fi' +
+          'lename basing on ID3Tag), but for batch-change of all files in folder.'
         WordWrap = True
       end
       object lblGlobal: TLabel
@@ -762,7 +738,7 @@ object MainForm: TMainForm
         Top = 380
         Width = 49
         Height = 13
-        Caption = 'Gotowe...'
+        Caption = 'Ready...'
       end
       object pbGlobal: TProgressBar
         Left = 4
@@ -776,7 +752,7 @@ object MainForm: TMainForm
         Top = 32
         Width = 299
         Height = 86
-        Caption = ' Niepe'#322'ne dane '
+        Caption = ' Missing data '
         TabOrder = 1
         object Label10: TLabel
           Left = 8
@@ -785,9 +761,8 @@ object MainForm: TMainForm
           Height = 39
           AutoSize = False
           Caption = 
-            'Nazwy plik'#243'w, kt'#243're maj'#261' brakuj'#261'ce dane w ID3Tag (tytu'#322' lub wyko' +
-            'nawca) nie b'#281'd'#261' zmieniane. Aby uwzgl'#281'dni'#263' r'#243'wnie'#380' takie pliki, z' +
-            'aznacz poni'#380'sze pole.'
+            'Files containing invalid or empty ID3Tags will be skipped during batch-change of filename' +
+            's. To include this kind of files as well, check follwoing checkbox.'
           WordWrap = True
         end
         object chbAlsoMissingData: TCheckBox
@@ -795,11 +770,7 @@ object MainForm: TMainForm
           Top = 64
           Width = 276
           Height = 17
-          Hint = 
-            'B'#322#281'dny ID3Tag#Je'#347'li to pole jest zaznaczone, do automatycznej zm' +
-            'iany nazw mo'#380'na wybra'#263' tak'#380'e te pliki, kt'#243're posiadaj'#261' braki (wy' +
-            'konawca, tytu'#322') w ID3Tag.'
-          Caption = 'Zmiana tak'#380'e nazw plik'#243'w posiadaj'#261'cych b'#322#281'dne dane'
+          Caption = 'Include files with empty or invalid ID3Tag'
           TabOrder = 0
         end
       end
@@ -808,7 +779,7 @@ object MainForm: TMainForm
         Top = 120
         Width = 299
         Height = 156
-        Caption = ' Tryb albumu '
+        Caption = ' Album mode '
         TabOrder = 2
         object Label8: TLabel
           Left = 8
@@ -816,9 +787,7 @@ object MainForm: TMainForm
           Width = 282
           Height = 26
           AutoSize = False
-          Caption = 
-            'Gdy dokonujesz zmiany nazw plik'#243'w, kt'#243're nale'#380#261' do jakie- go'#347' al' +
-            'bumu, mo'#380'esz skorzysta'#263' z dodatkowych opcji.'
+          Caption = 'Additional options for batch-change of filenames, that are part of some album.'
           WordWrap = True
         end
         object chbDontAddArtistName: TCheckBox
@@ -826,10 +795,7 @@ object MainForm: TMainForm
           Top = 48
           Width = 209
           Height = 17
-          Hint = 
-            'Bez wykonawcy#Zaznacz to pole, aby docelowa nazwa pliku zawiera'#322 +
-            'a tylko tytu'#322' utworu, bez wykonawcy.'
-          Caption = 'Nie dodawaj wykonawcy do nazwy pliku'
+          Caption = 'Do not add artist name to filename'
           TabOrder = 0
         end
         object gbNumbering: TGroupBox
@@ -852,7 +818,7 @@ object MainForm: TMainForm
             Top = 24
             Width = 25
             Height = 13
-            Caption = 'Krok:'
+            Caption = 'Step:'
             Enabled = False
           end
           object lblNums: TLabel
@@ -860,7 +826,7 @@ object MainForm: TMainForm
             Top = 24
             Width = 55
             Height = 13
-            Caption = 'Liczba cyfr:'
+            Caption = 'Digits:'
             Enabled = False
           end
           object chbNumbering: TCheckBox
@@ -868,10 +834,7 @@ object MainForm: TMainForm
             Top = -1
             Width = 82
             Height = 17
-            Hint = 
-              'Numeruj pliki#Okre'#347'la, czy w nazwach plik'#243'w pojawi si'#281' dodatkowo' +
-              ' numeracja.'
-            Caption = 'Numeruj pliki'
+            Caption = 'Add numbers to filenames'
             TabOrder = 0
             OnClick = chbNumberingClick
           end
@@ -880,9 +843,6 @@ object MainForm: TMainForm
             Top = 20
             Width = 40
             Height = 21
-            Hint = 
-              'Warto'#347#263' pocz'#261'tkowa#Liczba jak'#261' b'#281'dzie posiada'#322' w nazwie pierwszy' +
-              ' z grupy plik'#243'w poddawanej automatycznej zmianie nazwy.'
             Enabled = False
             MaxLength = 4
             TabOrder = 1
@@ -894,9 +854,6 @@ object MainForm: TMainForm
             Top = 20
             Width = 40
             Height = 21
-            Hint = 
-              'Krok numeracji#Post'#281'p - czyli r'#243#380'nica pomi'#281'dzy numerami kolejnyc' +
-              'h dw'#243'ch plik'#243'w.'
             Enabled = False
             MaxLength = 4
             TabOrder = 2
@@ -908,10 +865,6 @@ object MainForm: TMainForm
             Top = 20
             Width = 40
             Height = 21
-            Hint = 
-              'Liczba cyfr#Nadmiarowe miejsca w liczbie b'#281'd'#261' uzupe'#322'niane zerami' +
-              '. Np. przy trzech cyfrach liczba 7 przedstawiona b'#281'dzie jako 007' +
-              '.'
             Style = csDropDownList
             Enabled = False
             ItemHeight = 13
@@ -932,10 +885,8 @@ object MainForm: TMainForm
             Top = 48
             Width = 105
             Height = 17
-            Hint = 
-              'Wymu'#347' spearator#Zaznacz to pole, aby pomi'#281'dzy numeracj'#261', a reszt' +
-              #261' nazwy pojawi si'#281' separator.'
-            Caption = 'Wymu'#347' spearator'
+            Hint = 'Add separator after numbering'
+            Caption = 'Separator'
             Enabled = False
             TabOrder = 4
           end
@@ -944,10 +895,8 @@ object MainForm: TMainForm
             Top = 48
             Width = 50
             Height = 17
-            Hint = 
-              'Kropka#Zaznacz to pole, aby wymusi'#263' pojawienie si'#281' kropki po num' +
-              'erze porz'#261'dkowym w nazwie pliku.'
-            Caption = 'Kropka'
+            Hint = 'Add dot after numbering'
+            Caption = 'Separator'
             Checked = True
             Enabled = False
             State = cbChecked
@@ -958,10 +907,8 @@ object MainForm: TMainForm
             Top = 48
             Width = 97
             Height = 17
-            Hint = 
-              'Odst'#281'p#Zaznacz to pole, aby wymusi'#263' pojawienie si'#281' odst'#281'pu (spac' +
-              'ji) po numerze porz'#261'dkowym w nazwie pliku.'
-            Caption = 'Odst'#281'p (spacja)'
+            Hint = 'Add space after numbering'
+            Caption = 'Space'
             Checked = True
             Enabled = False
             State = cbChecked
@@ -974,9 +921,7 @@ object MainForm: TMainForm
           Width = 177
           Height = 17
           Hint = 
-            'Dodaj styl#Zaznacz, aby na pocz'#261'tku nazwy pliku (w nawiasach kwa' +
-            'dratowych) doda'#263' styl utworu.'
-          Caption = 'Dodaj styl utworu do nazwy pliku'
+          Caption = 'Add style to the beginning of filename'
           TabOrder = 1
         end
       end
@@ -985,7 +930,7 @@ object MainForm: TMainForm
         Top = 278
         Width = 299
         Height = 100
-        Caption = ' Lista plik'#243'w do zmiany nazwy '
+        Caption = ' List of files for name change '
         TabOrder = 3
         object Label1: TLabel
           Left = 8
@@ -993,8 +938,8 @@ object MainForm: TMainForm
           Width = 282
           Height = 26
           Caption = 
-            'Najpierw nale'#380'y wygenerowa'#263' list'#281' zmian i zaznaczy'#263' pliki, kt'#243'ry' +
-            'ch nazwy maj'#261' zosta'#263' zmienione.'
+            'You must generate file list first and check, which files should have name changed in batc' +
+            'h-mode filename change process.'
           WordWrap = True
         end
         object btnList: TButton
@@ -1002,10 +947,7 @@ object MainForm: TMainForm
           Top = 48
           Width = 120
           Height = 29
-          Hint = 
-            'Utw'#243'rz list'#281' plik'#243'w#Kliknij, aby rozpocz'#261#263' proces globalnej zmia' +
-            'ny nazwy'
-          Caption = 'Utw'#243'rz list'#281' plik'#243'w'
+          Caption = 'Generate list of files
           TabOrder = 0
           OnClick = btnListClick
         end
@@ -1014,11 +956,7 @@ object MainForm: TMainForm
           Top = 80
           Width = 284
           Height = 17
-          Hint = 
-            'Bez podsumowania#Zaznaczenie tego pola powoduje, '#380'e okno podsumo' +
-            'wania nie zostanie wy'#347'wietlone po zako'#324'czeniu procesu globalnej ' +
-            'zmiany nazwy plik'#243'w (tylko, je'#347'li nie wyst'#261'pi'#322'y b'#322#281'dy)'
-          Caption = 'Nie wy'#347'wietlaj podsumowania, je'#347'li nie wyst'#261'pi'#322'y b'#322#281'dy'
+          Caption = 'Do not display summary, if there was no errors'
           TabOrder = 1
         end
       end
@@ -1029,7 +967,6 @@ object MainForm: TMainForm
     Top = 6
     Width = 240
     Height = 19
-    Hint = 'Lista dysk'#243'w#Wybierz dysk na kt'#243'rym znajduj'#261' si'#281' pliki MP3'
     DirList = lbDirectory
     TabOrder = 3
   end
@@ -1038,10 +975,7 @@ object MainForm: TMainForm
     Top = 532
     Width = 240
     Height = 76
-    Hint = 
-      'Ost'#281'py mi'#281'dzy wyrazami#Okre'#347'la spos'#243'b zamiany odst'#281'p'#243'w mi'#281'dzy wy' +
-      'razami (spacji) w nazwie pliku.'
-    Caption = ' Odst'#281'py mi'#281'dzy wyrazami '
+    Caption = ' Spaces between words '
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -1049,10 +983,10 @@ object MainForm: TMainForm
     Font.Style = []
     ItemIndex = 0
     Items.Strings = (
-      'Usuwaj odst'#281'py mi'#281'dzy wyrazami'
-      'Usuwaj odst'#281'py i zmieniaj na du'#380'e litery'
-      'Nie usuwaj odst'#281'p'#243'w'
-      'Zamieniaj na znak separatora')
+      'Remove spaces between words in filename'
+      'Remove spaces and uppercase first letters'
+      'Do not remove spaces'
+      'Change spaces into separator string')
     ParentFont = False
     TabOrder = 1
     OnClick = rgSpacesClick
@@ -1062,7 +996,7 @@ object MainForm: TMainForm
     Top = 453
     Width = 240
     Height = 76
-    Caption = ' Zmiany w nazwach plik'#243'w '
+    Caption = ' Changes in filenames '
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -1075,17 +1009,14 @@ object MainForm: TMainForm
       Top = 54
       Width = 192
       Height = 13
-      Caption = 'Separator mi'#281'dzy tytu'#322'em i wykonawc'#261':'
+      Caption = 'Separator between artist and title in filename'
     end
     object chbPolishLetters: TCheckBox
       Left = 6
       Top = 16
       Width = 211
       Height = 17
-      Hint = 
-        'Polskie znaki#Zamienia polskie znaki na odpowiadaj'#261'ce im litery ' +
-        'bez "ogonk'#243'w".'
-      Caption = 'Polskie znaki na odpowiedaj'#261'ce im litery'
+      Caption = 'Replace Polish characters with corresponding letters'
       Checked = True
       State = cbChecked
       TabOrder = 0
@@ -1096,10 +1027,7 @@ object MainForm: TMainForm
       Top = 32
       Width = 170
       Height = 17
-      Hint = 
-        'Znaki przestankowe#Okre'#347'la, czy usuwa'#263' znaki przestankowe w nazw' +
-        'ie pliku.'
-      Caption = 'Usuwaj znaki przestankowe (.,'#39')'
+      Caption = 'Remove punctuation (dots, commas etc.)'
       Checked = True
       State = cbChecked
       TabOrder = 1
@@ -1110,9 +1038,6 @@ object MainForm: TMainForm
       Top = 50
       Width = 30
       Height = 21
-      Hint = 
-        'Separator#Sekwencja znak'#243'w oddzielaj'#261'ca tytu'#322' utworu od nazwy wy' +
-        'konwacy w nazwie pliku.'
       TabOrder = 2
       Text = ' - '
       OnChange = eSeparatorChange
@@ -1130,9 +1055,6 @@ object MainForm: TMainForm
       Top = 16
       Width = 23
       Height = 22
-      Hint = 
-        'Graj!#Rozpocz'#281'cie odtwarzania zaznaczonego pliku od jego pocz'#261'tk' +
-        'u.'
       Enabled = False
       Flat = True
       Glyph.Data = {
@@ -1156,9 +1078,6 @@ object MainForm: TMainForm
       Top = 16
       Width = 23
       Height = 22
-      Hint = 
-        'Pauza#Wstrzymanie odtwarzania aktualnego utworu. Zapami'#281'tuje mie' +
-        'jsce zatrzymania.'
       Enabled = False
       Flat = True
       Glyph.Data = {
@@ -1182,9 +1101,6 @@ object MainForm: TMainForm
       Top = 16
       Width = 23
       Height = 22
-      Hint = 
-        'Stop#Zatrzymanie odtwarzania aktualnego utworu. Przewija utw'#243'r d' +
-        'o pocz'#261'tku.'
       Enabled = False
       Flat = True
       Glyph.Data = {
@@ -1208,7 +1124,6 @@ object MainForm: TMainForm
       Top = 16
       Width = 156
       Height = 25
-      Hint = 'Pozycja'
       Enabled = False
       Max = 400
       PageSize = 10
@@ -1224,10 +1139,10 @@ object MainForm: TMainForm
       Width = 120
       Height = 17
       Hint = 
-        'U'#380'ywaj odtwarzacza#Zaznacz, aby odtwarza'#263' pliki. Domy'#347'lnie wy'#322#261'c' +
-        'zone, gdy'#380' mo'#380'e blokowa'#263' kart'#281' muzyczn'#261'!'
+        'Check to use audioplayer to play selected file. This checkbox is disabled by default, b' +
+        'ecause it my block soundcard on certain systems and prevent closing of program'
       TabStop = False
-      Caption = 'U'#380'ywaj odtwarzacza'
+      Caption = 'Use audio player'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1243,10 +1158,7 @@ object MainForm: TMainForm
     Top = 518
     Width = 90
     Height = 25
-    Hint = 
-      'Usu'#324' ID3Tag#Usuwa ca'#322#261' zawarto'#347#263' ID3Tag z nag'#322#243'wka wybranego pli' +
-      'ku.'
-    Caption = 'Usu'#324' ID3Tag'
+    Caption = 'Remove ID3Tag'
     TabOrder = 5
     OnClick = btnRemoveTagClick
   end
@@ -1255,10 +1167,7 @@ object MainForm: TMainForm
     Top = 518
     Width = 90
     Height = 25
-    Hint = 
-      'Poka'#380' ID3Tag#Wy'#347'wietla pe'#322'ne informacje zapisane w nag'#322#243'wku wybr' +
-      'anego pliku.'
-    Caption = 'Poka'#380' ID3Tag'
+    Caption = 'Show ID3Tag'
     TabOrder = 4
     OnClick = btnShowID3TagClick
   end
@@ -1282,7 +1191,7 @@ object MainForm: TMainForm
         8888888880000888888888888000008888888888800000088888888880000008
         8888888880000088888888888000088888888888800088888888888880088888
         8888888880888888888888888888888888888888888888888888}
-      Caption = 'Graj!'
+      Caption = 'Play!'
       OnClick = mnuPlayClick
     end
     object mnuPause: TMenuItem
@@ -1295,7 +1204,7 @@ object MainForm: TMainForm
         7777777700077000777777770007700077777777000770007777777700077000
         7777777700077000777777770007700077777777000770007777777700077000
         7777777777777777777777777777777777777777777777777777}
-      Caption = 'Pauza'
+      Caption = 'Pause'
       OnClick = mnuPauseClick
     end
     object mnuStop: TMenuItem
@@ -1324,7 +1233,7 @@ object MainForm: TMainForm
         0222033333333303000203300000330303020307777703030302030777770303
         0302030777770003030203077777070303020000000000000302220307777707
         0302220000000000000222220307777707022222000000000002}
-      Caption = 'Operacje plikowe'
+      Caption = 'File operations'
       object mnuDelete: TMenuItem
         Bitmap.Data = {
           F6000000424DF600000000000000760000002800000010000000100000000100
@@ -1335,7 +1244,7 @@ object MainForm: TMainForm
           0F7777000F777770F777777000F77700F7777777000F700F77777777700000F7
           7777777777000F7777777777700000F777777777000F70F77777770000F77700
           F77770000F7777700F77700F7777777700F77777777777777777}
-        Caption = 'Usu'#324' zaznaczony plik'
+        Caption = Delete selected file'
         OnClick = mnuDeleteClick
       end
       object mnuMove: TMenuItem
@@ -1348,7 +1257,7 @@ object MainForm: TMainForm
           0F488080804FFFFFFF4808F8FF4F00000F488F80804FFFFFFF4808F8FF4F00F4
           44488F80804FFFF4F48808F8FF4FFFF448888F8080444444888808F8F8F88888
           88888F8F80888888888808080888888888888888888888888888}
-        Caption = 'Przenie'#347' zaznaczony plik'
+        Caption = 'Move selected file'
         OnClick = mnuMoveClick
       end
       object mnuCopy: TMenuItem
@@ -1361,7 +1270,7 @@ object MainForm: TMainForm
           0F480000004FFFFFFF480FFFFF4F00000F480F00004FFFFFFF480FFFFF4F00F4
           44480F00004FFFF4F4880FFFFF4FFFF448880F00F044444488880FFFF0F08888
           88880FFFF0088888888800000088888888888888888888888888}
-        Caption = 'Kopiuj zaznaczony plik'
+        Caption = 'Copy selected file'
         OnClick = mnuCopyClick
       end
       object N3: TMenuItem
@@ -1377,7 +1286,7 @@ object MainForm: TMainForm
           FFFFFFFFF8AAAA0FFFFFFFFFF8AAAAA0FFFFFFFFF8AAAAAA0FFFFFFFF8AAAAAA
           8FFFFFFFF8AAAAA8FFFFFFFFF8AAAA8FFFFFFFFFF8AAA8FFFFFFFFFFF8AA8FFF
           FFFFFFFFF8A8FFFFFFFFFFFFF88FFFFFFFFFFFFFFFFFFFFFFFFF}
-        Caption = 'Wykonaj (odtw'#243'rz w odtwarzaczu systemowym)'
+        Caption = 'Execute (run in associated external program)'
         OnClick = mnuExecuteClick
       end
     end
@@ -1394,17 +1303,17 @@ object MainForm: TMainForm
         4777777447777774477777447777777744777744777777774477774477777777
         4477774477777777447777744777747447777774477774444777777777777444
         7777777777777444477777777777777777777777777777777777}
-      Caption = 'Od'#347'wie'#380' list'#281' plik'#243'w'
+      Caption = 'Refresh file list'
       OnClick = mnuRefreshClick
     end
     object mnuTrackChanges: TMenuItem
-      Caption = #346'ledzenie od'#347'wie'#380'ania listy'
+      Caption = 'Lock list updates'
       Checked = True
       OnClick = mnuTrackChangesClick
     end
   end
   object fd: TFolderDialog
-    Title = 'Wska'#380' katalog'
+    Title = 'Select folder'
     BrowsType = btNone
     SpecialFolder = sfNone
     Left = 168
@@ -1414,21 +1323,21 @@ object MainForm: TMainForm
     Left = 104
     Top = 40
     object mnuSAllLowercase: TMenuItem
-      Caption = 'wszystkie ma'#322'e'
+      Caption = 'all lowercase'
       GroupIndex = 1
       RadioItem = True
       OnClick = ChangeMenuSelection
     end
     object mnuSAllUppercase: TMenuItem
       Tag = 1
-      Caption = 'WSZYSTKIE DU'#379'E'
+      Caption = 'ALL UPPERCASE'
       GroupIndex = 1
       RadioItem = True
       OnClick = ChangeMenuSelection
     end
     object mnuSFirstUppercase: TMenuItem
       Tag = 2
-      Caption = 'Pierwsza litera du'#380'a'
+      Caption = 'First lestter in sentence uppercase'
       Checked = True
       GroupIndex = 1
       RadioItem = True
@@ -1436,14 +1345,14 @@ object MainForm: TMainForm
     end
     object mnuSFirstInWordUppercase: TMenuItem
       Tag = 3
-      Caption = 'Pierwsza Litera W S'#322'owie Du'#380'a'
+      Caption = 'First lestter in word uppercase'
       GroupIndex = 1
       RadioItem = True
       OnClick = ChangeMenuSelection
     end
     object mnuSEnglishStyle: TMenuItem
       Tag = 4
-      Caption = 'Tytu'#322' angielski (np. Jack in the Box)'
+      Caption = 'English title (i.e. Jack in the Box)'
       GroupIndex = 1
       RadioItem = True
       OnClick = ChangeMenuSelection
