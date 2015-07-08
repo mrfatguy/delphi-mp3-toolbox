@@ -3,7 +3,7 @@ object ListForm: TListForm
   Top = 103
   BorderIcons = []
   BorderStyle = bsDialog
-  Caption = 'Lista plików przeznaczonych do zmiany'
+  Caption = 'List of files to be changed'
   ClientHeight = 453
   ClientWidth = 688
   Color = clBtnFace
@@ -23,7 +23,7 @@ object ListForm: TListForm
     Top = 384
     Width = 90
     Height = 13
-    Caption = 'Wybrany folder:'
+    Caption = 'Selected folder:'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -37,8 +37,8 @@ object ListForm: TListForm
     Width = 580
     Height = 13
     Caption = 
-      'Wszystkich pozycji na liœcie: 0. Wybrano do automatycznej zmiany' +
-      ' nazwy: 0. Liczba pozycji, które nie bêd¹ zmienione: 0.'
+      'All items on the list: 0. Selected for an automated name' +
+      ' change: 0. Number of items, that will not be changed: 0.'
   end
   object lblMainInfo: TLabel
     Left = 8
@@ -47,10 +47,10 @@ object ListForm: TListForm
     Height = 26
     AutoSize = False
     Caption = 
-      'Poni¿sza lista zawiera propozycje automatycznej zmiany nazw plik' +
-      'ów w wybranym folderze. Odznaczone (nie bêd¹ zmieniane) zosta³y ' +
-      'te po- zycje, których ID3Tag zawiera niepe³ne dane lub w przypad' +
-      'ku, gdy zmiana spowodowa³aby zast¹pienie istniej¹cego pliku.'
+      'This list contains suggestions for an automated name change for ' +
+      'files in selected folder. When ID3Tag is empty or contains not e' +
+      'nough data or when automated name change would overwrite an exis'+
+      'ting file -- such items are unselected and will not be changed.'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -64,10 +64,7 @@ object ListForm: TListForm
     Top = 424
     Width = 120
     Height = 25
-    Hint = 
-      'Rozpocznij zmianê#Klikniêcie rozpoczyna proces zmiany nazwy wszy' +
-      'stkich znaznaczonych plików.'
-    Caption = 'Rozpocznij zmianê'
+    Caption = 'Start change'
     Default = True
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
@@ -86,7 +83,7 @@ object ListForm: TListForm
     Width = 75
     Height = 25
     Cancel = True
-    Caption = 'Anuluj'
+    Caption = 'Cancel'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 2
@@ -134,9 +131,7 @@ object ListForm: TListForm
     Top = 424
     Width = 24
     Height = 25
-    Hint = 
-      'Zaznacz wszystkie#Kliknij, aby zaznaczyæ wszystkie pozycje na li' +
-      'œcie.'
+    Hint = 'Select all'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 6
@@ -156,9 +151,7 @@ object ListForm: TListForm
     Top = 424
     Width = 24
     Height = 25
-    Hint = 
-      'Odznacz wszystkie#Kliknij, aby odznaczyæ wszystkie pozycje na li' +
-      'œcie.'
+    Hint = 'Deselect all'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 7
@@ -178,9 +171,7 @@ object ListForm: TListForm
     Top = 424
     Width = 24
     Height = 25
-    Hint = 
-      'Odwróæ zaznaczenie#Zamienia wszystkie zaznaczone pozycje w nieza' +
-      'znaczone i odwrotnie.'
+    Hint = 'Revert selection'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 8
@@ -200,12 +191,7 @@ object ListForm: TListForm
     Top = 424
     Width = 97
     Height = 25
-    Hint = 
-      'Edytuj...#Kliknij, aby zamkn¹æ to okno i przejœæ do edycji tagów' +
-      ' ID3Tagu zaznaczonej pozycji, na pierwszej zak³adce w oknie g³ów' +
-      'nym programu. Mo¿esz równie¿ dwuklikn¹æ na liœcie, aby osi¹gn¹æ ' +
-      'ten sam efekt.'
-    Caption = 'Edytuj...'
+    Caption = 'Edit...'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 5

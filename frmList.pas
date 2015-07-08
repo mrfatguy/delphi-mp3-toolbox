@@ -61,11 +61,11 @@ begin
                 iTotal:=fList.Items.Count;
                 for a:=0 to iTotal-1 do if fList.Checked[a] then Inc(iChecked);
 
-                lblFolder.Caption:='Wybrany folder: '+MainForm.lbFiles.Directory;
-                lblInfo.Caption:='Wszystkich pozycji na liœcie: '+IntToStr(iTotal)+'. Wybrano do automatycznej zmiany nazwy: '+IntToStr(iChecked)+'. Liczba pozycji, które nie bêd¹ zmienione: '+IntToStr(iTotal-iChecked)+'.';
-                lblMainInfo.Caption:='Poni¿sza lista zawiera propozycje automatycznej zmiany nazw plików w wybranym folderze. Odznaczone (nie bêd¹ zmieniane) zosta³y te po- zycje, których ID3Tag zawiera niepe³ne dane lub w przypadku, gdy zmiana spowodowa³aby zast¹pienie istniej¹cego pliku.';
-                btnOK.Caption:='Rozpocznij zmianê';
-                ListForm.Caption:='Lista plików przeznaczonych do zmiany';
+                lblFolder.Caption:='Selected folder: '+MainForm.lbFiles.Directory;
+                lblInfo.Caption:='All items on the list: '+IntToStr(iTotal)+'. Selected for an automated name change: '+IntToStr(iChecked)+'. Number of items, that will not be changed: '+IntToStr(iTotal-iChecked)+'.';
+                lblMainInfo.Caption:='This list contains suggestions for an automated name change for files in selected folder. When ID3Tag is empty or contains not enough data or when automated name change would overwrite an existing file -- such items are unselected and will not be changed.';
+                btnOK.Caption:='Start';
+                ListForm.Caption:='List of files to be changed';
 
                 btnSelectAll.Show;
                 btnDeselectAll.Show;
@@ -81,15 +81,15 @@ begin
                 iTotal:=fList.Items.Count;
                 for a:=0 to iTotal-1 do if fList.Checked[a] then Inc(iChecked);
 
-                lblFolder.Caption:='Wybrany folder: '+MainForm.lbFiles.Directory;
-                lblMainInfo.Caption:='Poni¿sza lista zawiera wyniki przeprowadzonego procesu automatycznej zmiany nazwy. Nazwy plików zaznaczonych zosta³y zmienione we- d³ug podanego wzorca. Pozycje odznaczone - to pliki, których nazwy z ró¿nych powodów nie mog³y zostaæ zmienione.';
-                btnOK.Caption:='Zamknij okno';
-                ListForm.Caption:='Wyniki procesu automatycznej zmiany';
+                lblFolder.Caption:='Selected folder: '+MainForm.lbFiles.Directory;
+                lblMainInfo.Caption:='This list contains a result of automated filename change, using selected pattern. Unchecked items are files, which name could not be changed, for various reasons.';
+                btnOK.Caption:='Close window';
+                ListForm.Caption:='Result of automated name change';
 
                 if iTotal=iChecked then
-                        lblInfo.Caption:='Nazwy wszystkich '+IntToStr(iTotal)+' wybranych plików zosta³y zmienione.'
+                        lblInfo.Caption:='Names of all '+IntToStr(iTotal)+' files were changed.'
                 else
-                        lblInfo.Caption:='Spoœród wszystkich '+IntToStr(iTotal)+' plików, automatyczna zmiana nazwy powiod³a siê w przypadku '+IntToStr(iChecked)+'. Pozosta³e '+IntToStr(iTotal-iChecked)+' nie zosta³y zmienione.';
+                        lblInfo.Caption:='Out of '+IntToStr(iTotal)+' files automated filename change was successfull in case of '+IntToStr(iChecked)+' files. Names of remaining '+IntToStr(iTotal-iChecked)+' files were not changed.';
 
                 btnSelectAll.Hide;
                 btnDeselectAll.Hide;
@@ -103,7 +103,7 @@ end;
 
 procedure TListForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-        MainForm.lblDesc.Caption:='Gotowe...';
+        MainForm.lblDesc.Caption:='Ready...';
         MainForm.lblGlobal.Caption:='0%';
         MainForm.pbGlobal.Position:=0;
 end;
@@ -160,7 +160,7 @@ procedure TListForm.btnCloseAndEditClick(Sender: TObject);
 begin
         if fList.ItemIndex=-1 then
         begin
-                Application.MessageBox('Nie zaznaczono ¿adnej pozycji!'+chr(13)+''+chr(13)+'Najpierw zaznacz na liœcie plik, którego ID3Tag chcesz edytowaæ.','Uwaga!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
+                Application.MessageBox('No selection!'+chr(13)+''+chr(13)+'Select file, which ID3Tag you want to edit','Warning!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
                 exit;
         end;
         MainForm.lbFiles.ItemIndex:=fList.ItemIndex;
@@ -173,7 +173,7 @@ end;
 
 procedure TListForm.btnOKClick(Sender: TObject);
 begin
-        if pnlMode.Caption<>'Result' then if Application.MessageBox('Czy na pewno rozpocz¹æ proces automatycznej zmiany?'+chr(13)+''+chr(13)+'Raz rozpoczêty, nie mo¿e zostaæ zatrzymany, a jego wyniki s¹ nieodwracalne.','Potwierdzenie...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2)=IDNO then exit;
+        if pnlMode.Caption<>'Result' then if Application.MessageBox('Are you sure, that you want to start automated filename change process?'+chr(13)+''+chr(13)+'Once started, it can not be stopped and changes are permanent','Confirm...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2)=IDNO then exit;
         Tag:=1;
         Close;
 end;

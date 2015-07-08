@@ -2,7 +2,7 @@ object InfoForm: TInfoForm
   Left = 232
   Top = 106
   BorderStyle = bsDialog
-  Caption = 'O programie...'
+  Caption = 'About...'
   ClientHeight = 263
   ClientWidth = 652
   Color = clWhite
@@ -1446,7 +1446,7 @@ object InfoForm: TInfoForm
     Top = 104
     Width = 388
     Height = 16
-    Caption = 'U'#380'yto: XAudio, MPG Tools, TFlatHint, FolderDialog, ThemeManager.'
+    Caption = 'Uses: XAudio, MPG Tools, TFlatHint, FolderDialog, ThemeManager.'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -1462,12 +1462,8 @@ object InfoForm: TInfoForm
     Width = 379
     Height = 13
     Cursor = crHandPoint
-    Hint = 
-      'Strona WWW#Kliknij tutaj, aby przej'#347#263' do mojej strony internetow' +
-      'ej.'
-    Caption = 
-      'Copyright '#169' 2001-2008 by Tomasz Trejderowski. Wszelkie prawa zas' +
-      'trze'#380'one!'
+    Hint = 'Click to visit my webpage'
+    Caption = 'Copyright '#169' 2001-2008 by Tomasz Trejderowski.'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -1484,7 +1480,7 @@ object InfoForm: TInfoForm
     Width = 388
     Height = 16
     AutoSize = False
-    Caption = 'Ten program jest rozpowszechniany na licencji freeware.'
+    Caption = 'This program is licensed under MIT License'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -1498,7 +1494,7 @@ object InfoForm: TInfoForm
     Top = 7
     Width = 369
     Height = 23
-    Caption = 'pnMP3 - panel narz'#281'dziowy MP3, wersja 2.2'
+    Caption = 'MP3 Toolbox 2.2'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -1513,10 +1509,7 @@ object InfoForm: TInfoForm
     Width = 387
     Height = 48
     AutoSize = False
-    Caption = 
-      'Proste narz'#281'dzie, kt'#243're u'#322'atwia (czasem utrudnia! :) porz'#261'dkowa-' +
-      ' nie nazw plik'#243'w MP3 oraz edycj'#281' tag'#243'w ID3Tag. Posiada te'#380' dodat' +
-      '- kowe narz'#281'dzia, kt'#243're niekoniecznie s'#261' przydatne, ale s'#261'! :)'
+    Caption = ''
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -1531,7 +1524,7 @@ object InfoForm: TInfoForm
     Top = 120
     Width = 384
     Height = 16
-    Caption = 'Uwaga! W tej wersji programu obs'#322'ugiwany jest tylko ID3Tag v1.1!'
+    Caption = 'Warning! This version supports only ID3Tagv1!'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clRed
     Font.Height = -13

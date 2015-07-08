@@ -3,7 +3,7 @@ object TagForm: TTagForm
   Top = 103
   BorderIcons = []
   BorderStyle = bsDialog
-  Caption = 'Globalna edycja tagów ID3Tag'
+  Caption = 'Global ID3Tag tag edit'
   ClientHeight = 585
   ClientWidth = 688
   Color = clBtnFace
@@ -25,7 +25,7 @@ object TagForm: TTagForm
     Width = 199
     Height = 26
     AutoSize = False
-    Caption = 'Zaznacz przynajmniej jedno pole  w ramce obok, aby kontynuowaæ!'
+    Caption = 'Check at least one checkbox to continue!'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clRed
     Font.Height = -11
@@ -41,7 +41,7 @@ object TagForm: TTagForm
     Width = 199
     Height = 26
     AutoSize = False
-    Caption = 'Wybierz przynajmniej jedn¹ pozy- cjê na liœcie, aby kontynuowaæ!'
+    Caption = 'Select at least one item on the list to continue!'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clRed
     Font.Height = -11
@@ -56,7 +56,7 @@ object TagForm: TTagForm
     Top = 552
     Width = 90
     Height = 13
-    Caption = 'Wybrany folder:'
+    Caption = 'Selected folder:'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -71,10 +71,9 @@ object TagForm: TTagForm
     Height = 26
     AutoSize = False
     Caption = 
-      'Narzêdzie to mo¿na wykorzystaæ do zmiany (ujednolicenia) wartoœc' +
-      'i w tagach ID3Tag, w wielu plikach jednoczeœnie. Zaznacz pliki, ' +
-      'których tagi maj¹ byæ zmienione, ustal parametry oraz kliknij na' +
-      ' klawiszu --> "Rozpocznij zmianê".'
+      'This tool can be used for batch-changing values in ID3Tags of ma' +
+      'ny files in one time. Select files, which ID3Tags should be chan' +
+      'ged, set parameters and start by clicking on "Start" button.'
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
     Font.Height = -11

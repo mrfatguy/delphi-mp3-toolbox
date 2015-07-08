@@ -12,11 +12,11 @@ function ClearWrongTag(TagField: String): String;
 begin
         Result:=TagField;
         
-        if TagField='[notag]' then Result:='[brak danych]';
-        if TagField='[not found: ]' then Result:='[brak danych]';
-        if TagField='Unknown Artist' then Result:='[brak danych]';
-        if TagField='Unknown Title' then Result:='[brak danych]';
-        if ExtractFilePath(TagField)<>'' then Result:='[brak danych]';
+        if TagField='[notag]' then Result:='[n/a]';
+        if TagField='[not found: ]' then Result:='[n/a]';
+        if TagField='Unknown Artist' then Result:='[n/a]';
+        if TagField='Unknown Title' then Result:='[n/a]';
+        if ExtractFilePath(TagField)<>'' then Result:='[n/a]';
 end;
 
 end.

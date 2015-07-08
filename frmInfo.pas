@@ -35,7 +35,7 @@ implementation
 
 procedure TInfoForm.GoToURL(Sender: TObject);
 begin
-        ShellExecute(Handle,'open','http://www.tomasz.trejderowski.com/','','',SW_SHOW);
+        ShellExecute(Handle,'open','http://www.gaman.pl/','','',SW_SHOW);
 end;
 
 procedure TInfoForm.CloseWindow(Sender: TObject);
