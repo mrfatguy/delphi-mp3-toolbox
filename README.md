@@ -16,4 +16,16 @@ I don't have access to either most of my components used in this or any other of
 
 Keep in mind, that both comments and names (variables, object) are in Polish. I didn't find enough time and determination to translated them as well. I only translated strings.
 
+### Used components and libraries
+
+If you wish to work on source code of this application, then there are few things you need to remember:
+
+1. This project is based on `MPGTools.pas` -- a library created (and last time updated?) in... 1999! Even though program was perfectly building in Delphi 5, it dies completely with a lot of `Unsafe code` and many other warnings or errors, when trying to build it in Delphi 7 or anything newer! You can either try to fight this monster and fix all the _unsafe code_ or make use of [Audio Tools Library](http://mac.cvs.sourceforge.net/viewvc/mac/unstable/Units/ID3v2.pas?view=markup) or anything else for reading and writing of ID3Tags. ATL should compile in Delphi 7 or newer (never checked that actually!) and beside has full support for ID3Tagv2.
+
+2. Project uses `ThemeManger` component to add Windows XP-like style to application. This is past, of course. Compiling in any new Delphi version should have the same effect.
+
+3. Project uses `TXAudioPlayer` and `TFolderDialog` which are no longer available (for free / with sources / not available at all). I used some "home-cooked" replacement (modified version of `TXaPlayer` for example) to make this program compilable in Delphi 7, but expect some strange issues around this corner now or in the future.
+
+4. Project uses `TFlatHint` component from `FlatStyle` library. Original component failed to compile in Delphi 7, so I installed newest version of `FlatHint` library. It works (compiles), but certain hints may look strange and my need to be revised.
+
 **This project ABANDONED! There is no wiki, issues and no support. There will be no future updates. Unfortunately, you're on your own.**

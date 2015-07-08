@@ -1,0 +1,12 @@
+WordSpaces=2
+PolishLetters=1
+UsePlayer=1
+BreakSigns=1
+Directory=D:\Delphi\Moje projekty\pnMP3
+Separator= - 
+TabIndex=1
+AlsoMissingData=0
+FastEditor=0
+NoSummaryIfNoErrors=1
+SplitterPosition=229
+MenuCheck=4
