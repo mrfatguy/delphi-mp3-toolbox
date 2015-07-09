@@ -343,7 +343,7 @@ object MainForm: TMainForm
           Height = 17
           Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
-          Caption = 'Style:'
+          Caption = 'Genre:'
           TabOrder = 11
         end
         object eLength: TEdit
@@ -363,7 +363,7 @@ object MainForm: TMainForm
           Top = 153
           Width = 140
           Height = 21
-          Hint = 'Not all MP3 styles are supported! Sorry...'
+          Hint = 'Not all MP3 genres are supported! Sorry...'
           Style = csDropDownList
           ItemHeight = 13
           TabOrder = 5
@@ -400,7 +400,7 @@ object MainForm: TMainForm
           Height = 17
           Hint = 'Check to keep this value when changing files on file list'
           TabStop = False
-          Caption = 'Author:'
+          Caption = 'Artist:'
           TabOrder = 7
         end
         object cbYear: TCheckBox
@@ -582,7 +582,7 @@ object MainForm: TMainForm
         Height = 39
         AutoSize = False
         Caption = 
-          'Here you can build list of authors and titles of all files stored in currently sel' +
+          'Here you can build list of artists and titles of all files stored in currently sel' +
           'ected folder. These information will be obtained from ID3Tag of each file. Warning'
           '! This process may take some time, if you have many files in this folder...'
         WordWrap = True
@@ -921,7 +921,7 @@ object MainForm: TMainForm
           Width = 177
           Height = 17
           Hint = 
-          Caption = 'Add style to the beginning of filename'
+          Caption = 'Add genre to the beginning of filename'
           TabOrder = 1
         end
       end

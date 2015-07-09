@@ -88,8 +88,8 @@ object TagForm: TTagForm
     Width = 543
     Height = 13
     Caption = 
-      'Wszystkich pozycji na liœcie: 0. Wybrano do zmiany tagów ID3Tag:' +
-      ' 0. Liczba pozycji, które nie bêd¹ zmienione: 0.'
+      'All items on the list: 0. Items selected for ID3Tag changing:' +
+      ' 0. Number of items, which ID3Tags will not be changed: 0.'
   end
   object fList: TListView
     Left = 8
@@ -99,16 +99,16 @@ object TagForm: TTagForm
     Checkboxes = True
     Columns = <
       item
-        Caption = 'Tytu³'
+        Caption = 'Title'
         Width = 180
       end
       item
-        Caption = 'Wykonawca'
+        Caption = 'Artist'
         Width = 140
       end
       item
         Alignment = taCenter
-        Caption = 'Styl muzyki'
+        Caption = 'Genre'
         Width = 80
       end
       item
@@ -117,24 +117,24 @@ object TagForm: TTagForm
       end
       item
         Alignment = taCenter
-        Caption = 'Rok'
+        Caption = 'Year'
         Width = 40
       end
       item
         Alignment = taCenter
-        Caption = 'D³ugoœæ'
+        Caption = 'Length'
         Width = 56
       end
       item
         Alignment = taCenter
-        Caption = 'Œcie¿ka'
+        Caption = 'Path'
       end
       item
-        Caption = 'Komentarz'
+        Caption = 'Comment'
         Width = 140
       end
       item
-        Caption = 'Plik'
+        Caption = 'File'
         Width = 280
       end>
     ColumnClick = False
@@ -158,10 +158,7 @@ object TagForm: TTagForm
     Top = 520
     Width = 120
     Height = 25
-    Hint = 
-      'Rozpocznij zmianê#Klikniêcie rozpoczyna proces zmiany nazwy wszy' +
-      'stkich znaznaczonych plików.'
-    Caption = 'Rozpocznij zmianê'
+    Caption = 'Start'
     Default = True
     Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clWindowText
@@ -179,11 +176,8 @@ object TagForm: TTagForm
     Top = 520
     Width = 75
     Height = 25
-    Hint = 
-      'Anuluj#Zamyka to okno, bez wykonywania jakichkolwiek operacji. [' +
-      'Esc]'
     Cancel = True
-    Caption = 'Anuluj'
+    Caption = 'Cancel'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 10
@@ -203,14 +197,14 @@ object TagForm: TTagForm
     Top = 379
     Width = 465
     Height = 166
-    Caption = ' Tagi ID3Tag '
+    Caption = ' ID3Tag fields '
     TabOrder = 1
     object lblTime: TLabel
       Left = 296
       Top = 104
       Width = 66
       Height = 13
-      Caption = 'Czas trwania:'
+      Caption = 'Length:'
     end
     object Bevel2: TBevel
       Left = 6
@@ -225,8 +219,8 @@ object TagForm: TTagForm
       Width = 412
       Height = 13
       Caption = 
-        'Zaznaczone poni¿ej tagi zostan¹ wpisane do WSZYSTKICH plików wyb' +
-        'ranych na liœcie!'
+        'ID3Tag fields listed below will be added to ALL files selected o' +
+        'n the list!'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -303,7 +297,7 @@ object TagForm: TTagForm
       Top = 96
       Width = 220
       Height = 21
-      Hint = 'Rodzaj muzyki#Obecnie nie wszystkie rodzaje s¹ obs³ugiwane!'
+      Hint = 'Not all genres are currently supported! Sorry...'
       Style = csDropDownList
       Color = clBtnFace
       Enabled = False
@@ -342,10 +336,8 @@ object TagForm: TTagForm
       Top = 39
       Width = 49
       Height = 17
-      Hint = 
-        'Tytu³#Odznacz, jeœli nie chcesz zmieniaæ tytu³u utworu w tagach ' +
-        'ID3Tag wybranych plików.'
-      Caption = 'Tytu³:'
+      Hint = 'Uncheck, if you do not want to change titles in selected files.'
+      Caption = 'Title:'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -363,10 +355,8 @@ object TagForm: TTagForm
       Top = 39
       Width = 81
       Height = 17
-      Hint = 
-        'Wykonawca#Odznacz, jeœli nie chcesz zmieniaæ wykonawcy w tagach ' +
-        'ID3Tag wybranych plików.'
-      Caption = 'Wykonawca:'
+      Hint = 'Uncheck, if you do not want to change artists in selected files.'
+      Caption = 'Artist:'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -384,10 +374,8 @@ object TagForm: TTagForm
       Top = 79
       Width = 76
       Height = 17
-      Hint = 
-        'Styl utworu#Odznacz, jeœli nie chcesz zmieniaæ stylu utworu w ta' +
-        'gach ID3Tag wybranych plików.'
-      Caption = 'Styl utworu:'
+      Hint = 'Uncheck, if you do not want to change genres in selected files.'
+      Caption = 'Genre:'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -405,9 +393,7 @@ object TagForm: TTagForm
       Top = 79
       Width = 53
       Height = 17
-      Hint = 
-        'Album#Odznacz, jeœli nie chcesz zmieniaæ albumu w tagach ID3Tag ' +
-        'wybranych plików.'
+      Hint = 'Uncheck, if you do not want to albums titles in selected files.'
       Caption = 'Album:'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
@@ -426,10 +412,8 @@ object TagForm: TTagForm
       Top = 119
       Width = 76
       Height = 17
-      Hint = 
-        'Komentarz#Odznacz, jeœli nie chcesz zmieniaæ komentarza w tagach' +
-        ' ID3Tag wybranych plików.'
-      Caption = 'Komentarz:'
+      Hint = 'Uncheck, if you do not want to change comments in selected files.'
+      Caption = 'Comment:'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -447,10 +431,8 @@ object TagForm: TTagForm
       Top = 119
       Width = 40
       Height = 17
-      Hint = 
-        'Rok#Odznacz, jeœli nie chcesz zmieniaæ roku w tagach ID3Tag wybr' +
-        'anych plików.'
-      Caption = 'Rok:'
+      Hint = 'Uncheck, if you do not want to change year in selected files.'
+      Caption = 'Year:'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -468,11 +450,9 @@ object TagForm: TTagForm
       Top = 119
       Width = 56
       Height = 17
-      Hint = 
-        'Œcie¿ka#Odznacz, jeœli nie chcesz zmieniaæ œcie¿ki w tagach ID3T' +
-        'ag wybranych plików.'
+      Hint = 'Uncheck, if you do not want to change track numbers in selected files.'
       Alignment = taLeftJustify
-      Caption = 'Œcie¿ka:'
+      Caption = 'Track no:'
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -490,9 +470,7 @@ object TagForm: TTagForm
       Top = 119
       Width = 15
       Height = 17
-      Hint = 
-        'Numeruj œcie¿ki#Zaznacz, jeœli chcesz, aby pole œcie¿ka mia³o ko' +
-        'lejne numery'
+      Hint = 'Check, to add incrementing numbers as track numbers'
       Alignment = taLeftJustify
       Enabled = False
       Font.Charset = EASTEUROPE_CHARSET
@@ -513,11 +491,11 @@ object TagForm: TTagForm
       Width = 58
       Height = 17
       Hint = 
-        'Numeruj tytu³#Zaznacz jeœli chcesz, aby do tytu³u by³ zawsze dod' +
-        'awany kolejny numer. Uwaga! Jeœli tytu³ jest zbyt d³ugi - numera' +
-        'cja mo¿e byæ obciêta lub w ogóle siê nie pojawiæ!'
+        'Check, to add incrementing numbers after each title. Warning! If' +
+        ' title is too long, numbers may become trimmed or does not appea' +
+        'r at all!'
       Alignment = taLeftJustify
-      Caption = 'Numeruj'
+      Caption = 'Numbers'
       Enabled = False
       Font.Charset = EASTEUROPE_CHARSET
       Font.Color = clWindowText
@@ -536,9 +514,7 @@ object TagForm: TTagForm
       Top = 39
       Width = 15
       Height = 17
-      Hint = 
-        'Dodaj nawiasy#Zaznacz, jeœli chcesz, aby numeracja by³a dodawana' +
-        ' w nawiasach kwadratowych'
+      Hint = 'Check, if you want to add numbers in square brackets.'
       Alignment = taLeftJustify
       Enabled = False
       Font.Charset = EASTEUROPE_CHARSET
@@ -559,10 +535,10 @@ object TagForm: TTagForm
     Width = 97
     Height = 25
     Hint = 
-      'Odczytaj tagi#Kliknij, aby odczytaæ tagi ID3Tag z zaznaczonej po' +
-      'zycji i umieœciæ je w polach po lewej stronie. To samo dzieje si' +
-      'ê po dwukrotnym klikniêciu dowolnej pozycji na liœcie.'
-    Caption = 'Odczytaj tagi'
+      'Click this button (or double click any item on the list) to read' +
+      ' ID3Tag from currently selected item on the list and to copy rea' +
+      'd value to edit fields.'
+    Caption = 'Read tags'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 3
@@ -591,9 +567,7 @@ object TagForm: TTagForm
     Top = 416
     Width = 24
     Height = 25
-    Hint = 
-      'Zaznacz wszystkie#Kliknij, aby zaznaczyæ wszystkie pozycje na li' +
-      'œcie.'
+    Hint = 'Select all'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 6
@@ -613,9 +587,7 @@ object TagForm: TTagForm
     Top = 416
     Width = 24
     Height = 25
-    Hint = 
-      'Odznacz wszystkie#Kliknij, aby odznaczyæ wszystkie pozycje na li' +
-      'œcie.'
+    Hint = 'Deselect all'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 7
@@ -635,9 +607,7 @@ object TagForm: TTagForm
     Top = 416
     Width = 24
     Height = 25
-    Hint = 
-      'Odwróæ zaznaczenie#Zamienia wszystkie zaznaczone pozycje w nieza' +
-      'znaczone i odwrotnie.'
+    Hint = 'Invert selection'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 8
@@ -657,10 +627,8 @@ object TagForm: TTagForm
     Top = 416
     Width = 97
     Height = 25
-    Hint = 
-      'Wyczyœæ#Klikniêcie powoduje wyczyszczenie wszystkich pól w ramce' +
-      ' Tagi ID3Tag'
-    Caption = 'Wyczyœæ...'
+    Hint = 'Clear all ID3Tag related fields'
+    Caption = 'Clear...'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 5
@@ -685,11 +653,8 @@ object TagForm: TTagForm
     Top = 384
     Width = 97
     Height = 25
-    Hint = 
-      'Edytuj...#Kliknij, aby zamkn¹æ to okno i przejœæ do edycji tagów' +
-      ' ID3Tagu zaznaczonej pozycji, na pierwszej zak³adce w oknie g³ów' +
-      'nym programu'
-    Caption = 'Edytuj...'
+    Hint = 'Go back to first tab in main window, to edit selected file'
+    Caption = 'Edit...'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4

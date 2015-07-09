@@ -322,9 +322,9 @@ procedure TMainForm.UpdateFields();
 var
         sResult: String;
 begin
-        lblFilesCount.Caption:='Liczba wszystkich plików w folderze: '+IntToStr(lbFiles.Items.Count);
+        lblFilesCount.Caption:='Total number of files in this folder: '+IntToStr(lbFiles.Items.Count);
         sResult:=GenerateFileNameFromID3(Trim(eAuthor.Text), Trim(eTitle.Text), False);
-        if (eTitle.Text<>'') and (eAuthor.Text<>'') and (eTitle.Text<>'[brak danych]') and (eAuthor.Text<>'[brak danych]') then eNewFile.Text:=sResult else eNewFile.Text:='';
+        if (eTitle.Text<>'') and (eAuthor.Text<>'') and (eTitle.Text<>'[n/a]') and (eAuthor.Text<>'[n/a]') then eNewFile.Text:=sResult else eNewFile.Text:='';
 
         btnDoIt.Enabled:=(lbFiles.Items.Count>1);
         btnList.Enabled:=(lbFiles.Items.Count>1);
@@ -423,9 +423,9 @@ begin
                 end;
 
                 if mp3.Duration < 3600 then
-                        eLength.Text := FormatDateTime('nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sek.)'
+                        eLength.Text := FormatDateTime('nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sec.)'
                 else
-                        eLength.Text := FormatDateTime('hh:nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sek.)';
+                        eLength.Text := FormatDateTime('hh:nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sec.)';
         end;
         Screen.Cursor:=crDefault;
 end;
@@ -526,7 +526,7 @@ var
 begin
 	if lbFiles.ItemIndex=-1 then exit;
 	fil:=lbFiles.Items.Strings[lbFiles.ItemIndex];
-	if Application.MessageBox(PCHar('Plik "'+fil+'" zostanie usuniêty.'+#13+#13+'Program pnM3 usuwa pliki bez poœrednictwa Kosza'+#13+'systemowego i operacji takiej nie mo¿na cofn¹æ ani zatrzymaæ!'+#13+#13+'Usun¹æ?'),'PotwierdŸ...',MB_YESNO+MB_ICONWARNING+MB_DEFBUTTON2)=ID_NO then exit;
+	if Application.MessageBox(PCHar('File "'+fil+'" will be PERMANENTLY deleted!'+#13+#13+'MP3 Toolbox deletes files without using system Bin and this operation CANNOT be undone!'+#13+#13+'Delete anyway?'),'Confirm...',MB_YESNO+MB_ICONWARNING+MB_DEFBUTTON2)=ID_NO then exit;
 	if chbUsePlayer.Checked then
 	begin
 		XaudioPlayer.Stop;
@@ -583,7 +583,7 @@ var
         a: Integer;
 begin
         for a := 0 to MaxStyles do cbGenreList.Items.Add(MusicStyle[a]);        
-        cbGenreList.Items.Add('(Nie znany)');
+        cbGenreList.Items.Add('(unknown)');
 
         LoadSettings();
 end;
@@ -620,9 +620,9 @@ begin
         mp3.Year:=eYear.Text;
         mp3.Album:=eAlbum.Text;
 
-        if cbGenreList.Text <> '(Nie znany)' then mp3.Genre := cbGenreList.ItemIndex else mp3.Genre := 255;
+        if cbGenreList.Text <> '(unknown)' then mp3.Genre := cbGenreList.ItemIndex else mp3.Genre := 255;
 
-        if mp3.WriteTag<>0 then Application.MessageBox(PChar('Wyst¹pi³ b³¹d podczas próby zapisu ID3Tag dla pliku:'+chr(13)+mp3.FileName+chr(13)+chr(13)+'Plik mo¿e byæ tylko do odczytu lub uszkodzony.'),'B³¹d...',MB_OK+MB_ICONERROR+MB_DEFBUTTON2);
+        if mp3.WriteTag<>0 then Application.MessageBox(PChar('An attempt to write MP3Tag for '+chr(13)+mp3.FileName+chr(13)+chr(13)+' has failed! File may be read-only, invalid, broken or not accessible.'),'Error...',MB_OK+MB_ICONERROR+MB_DEFBUTTON2);
 
         mp3.Free;
 
@@ -679,7 +679,7 @@ begin
 
         if eNewFile.Text='' then
         begin
-                Application.MessageBox('Nie mo¿na zmieniæ nazwy pliku, gdy¿ pole "Proponowana nazwa pliku" jest puste!','Ostrze¿enie',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
+                Application.MessageBox('Changing filename is impossible, because suggested new name is empty!','Warning',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
                 exit;
         end;
 
@@ -694,7 +694,7 @@ begin
         sNewName:=eNewFile.Text;
 
         IsOK:=RenameFile(sOldName,sNewName);
-        if IsOK=False then Application.MessageBox(PChar('Wyst¹pi³ b³¹d przy próbie zmiany nazwy pliku:'+chr(13)+sOldName+chr(13)+chr(13)+'Operacja nie powiod³a siê - plik o zadanej nazwie mo¿e ju¿ istnieæ lub byæ tylko do odczytu lub uszkodzony.'),'B³¹d!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
+        if IsOK=False then Application.MessageBox(PChar('An attempt to change name of :'+chr(13)+sOldName+chr(13)+chr(13)+' has failed. File may be read-only, invalid, broken or not accessible. Or another file with the same name already exists.'),'Error!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
 
         mnuRefreshClick(self);
         if mnuTrackChanges.Checked then lbFiles.ItemIndex:=lbFiles.Items.IndexOf(sNewName);
@@ -704,7 +704,7 @@ procedure TMainForm.btnAllClick(Sender: TObject);
 begin
         if eNewFile.Text='' then
         begin
-                Application.MessageBox('Nie mo¿na zmieniæ nazwy pliku, gdy¿ pole "Proponowana nazwa pliku" jest puste!','Ostrze¿enie',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
+                Application.MessageBox('Changing filename is impossible, because suggested new name is empty!','Warning',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
                 exit;
         end;
         
@@ -732,21 +732,21 @@ begin
 	begin
 		if fd.Directory=lbFiles.Directory then
 		begin
-			Application.MessageBox('Foldery Ÿród³owy i docelowy s¹ identyczne!'+#13+#13+'Operacja zosta³a anulowana.','Ostrze¿enie!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
+			Application.MessageBox('Operation has been cancelled, because source and destination folders are the same','Warning!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
 			exit;
 		end;
-		if Application.MessageBox(PCHar('Plik "'+fil+'" zostanie przeniesiony.'+#13+#13+'Folder Ÿród³owy: '+lbFiles.Directory+#13+'Folder docelowy: '+fd.Directory+#13+#13+'Przenieœæ?'),'PotwierdŸ...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2)=ID_YES then
+		if Application.MessageBox(PCHar('File "'+fil+'" will be moved from "'+lbFiles.Directory+'" to "'+fd.Directory+'"'+#13+#13+'Proceed?'),'Confirm...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2)=ID_YES then
 		begin
 			tst:=CopyFile(PChar(lbFiles.Directory+'\'+fil),PChar(fd.Directory+'\'+fil),True);
 			if tst=False then
 			begin
-				Application.MessageBox('Wyst¹pi³ b³¹d przy próbie przenoszenia pliku!','Ostrze¿enie!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
+				Application.MessageBox('An error occurred during copying file to destination folder. Operation has failed!','Warning!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
 				exit;
 			end;
 			tst:=DeleteFile(lbFiles.Directory+'\'+fil);
 			if tst=False then
 			begin
-				Application.MessageBox('Wyst¹pi³ b³¹d przy próbie przenoszenia pliku!','Ostrze¿enie!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
+				Application.MessageBox('An error occurred during removing file at source folder. Operation has failed!','Warning!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
 				exit;
 			end;
 		end;
@@ -772,11 +772,11 @@ begin
 	begin
 		if fd.Directory=lbFiles.Directory then
 		begin
-			Application.MessageBox('Foldery Ÿród³owy i docelowy s¹ identyczne!'+#13+#13+'Operacja zosta³a anulowana.','Ostrze¿enie!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
+			Application.MessageBox('Operation has been cancelled, because source and destination folders are the same','Warning!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
 			exit;
 		end;
 		tst:=CopyFile(PChar(lbFiles.Directory+'\'+fil),PChar(fd.Directory+'\'+fil),True);
-		if tst=False then Application.MessageBox('Wyst¹pi³ b³¹d przy próbie kopiowania pliku!','Ostrze¿enie!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
+		if tst=False then Application.MessageBox('An error occurred during copying file to destination folder. Operation has failed!','Warning!',MB_OK+MB_ICONERROR+MB_DEFBUTTON1);
 	end;
 end;
 
@@ -809,7 +809,7 @@ begin
 
 	mp3:=TMPEGAudio.Create;
 
-        lblStatus.Caption:='Generowanie listy zmian...';
+        lblStatus.Caption:='List of changes is being generated...';
 	pbStatus.Min:=0;
 	pbStatus.Max:=lbFiles.Items.Count-1;
 
@@ -841,7 +841,7 @@ begin
                 lst.SubItems.Add(sTitle);
 
                 if mp3.Genre > MaxStyles then
-                        lst.SubItems.Add('(Nie znany)')
+                        lst.SubItems.Add('(unknown)')
                 else
                         lst.SubItems.Add(MainForm.cbGenreList.Items[mp3.Genre]);
 
@@ -859,13 +859,13 @@ begin
 
                 b := TagForm.GetListItemIndexByCaption(sArtist);
 
-                if ((sArtist <> '[brak danych]') and (sTitle <> '[brak danych]')) or (chbDontAddArtistName.Checked and (sTitle<>'[brak danych]')) then
+                if ((sArtist <> '[n/a]') and (sTitle <> '[n/a]')) or (chbDontAddArtistName.Checked and (sTitle<>'[n/a]')) then
                 begin
                         TagForm.fList.Items[b].Checked := True;
                 end
                 else
                 begin
-                        TagForm.fList.Items[b].Caption := '{Niepe³ne dane!} ' + TagForm.fList.Items[b].Caption;
+                        TagForm.fList.Items[b].Caption := '{empty or invalid ID3Tag} ' + TagForm.fList.Items[b].Caption;
                         if chbAlsoMissingData.Checked then
                                 TagForm.fList.Items[b].Checked := True
                         else
@@ -874,7 +874,7 @@ begin
 
                 if FileGetAttr(mp3.FileName) and faReadOnly<>0 then
                 begin
-                        TagForm.fList.Items[b].Caption := '{Atrybut tylko-do-odczytu!} '+TagForm.fList.Items[b].Caption;
+                        TagForm.fList.Items[b].Caption := '{read-only file} '+TagForm.fList.Items[b].Caption;
                         TagForm.fList.Items[b].Checked := False;
                 end;
 
@@ -886,7 +886,7 @@ begin
 	mp3.Free;
         MainForm.Enabled := True;
         pbStatus.Position := 0;
-        lblStatus.Caption := 'Gotowe...';
+        lblStatus.Caption := 'Ready...';
 	Screen.Cursor := crDefault;
 
         btnCopyToClipboard.Enabled := (mList.Items.Count > 0);
@@ -1028,7 +1028,7 @@ begin
 
         mnuRefreshClick(self);
         MainForm.Enabled:=False;
-        lblDesc.Caption:='Generowanie listy zmian...';
+        lblDesc.Caption:='List of changes is being generated...';
 	ListForm.fList.Clear;
 
 	mp3:=TMPEGAudio.Create;
@@ -1047,7 +1047,7 @@ begin
                 sResult := '';
 
                 sGenre := mp3.GenreStr;
-                if sGenre = 'Unknown' then sGenre := 'Nie znany';
+                if sGenre = 'Unknown' then sGenre := '(unknown)';
                 if chbAddStyle.Checked then sResult := '[' + sGenre + '] ';
 
                 if chbDontAddArtistName.Checked then
@@ -1075,13 +1075,13 @@ begin
 		ListForm.fList.Items.Add(sItem);
                 b:=ListForm.fList.Items.IndexOf(sItem);
 
-                if ((sArtist<>'[brak danych]') and (sTitle<>'[brak danych]')) or (chbDontAddArtistName.Checked and (sTitle<>'[brak danych]')) then
+                if ((sArtist<>'[n/a]') and (sTitle<>'[n/a]')) or (chbDontAddArtistName.Checked and (sTitle<>'[n/a]')) then
                 begin
                         ListForm.fList.Checked[b]:=True;
                 end
                 else
                 begin
-                        ListForm.fList.Items[b]:='{Niepe³ne dane!} '+ListForm.fList.Items[b];
+                        ListForm.fList.Items[b]:='{empty or invalid ID3Tag} '+ListForm.fList.Items[b];
                         if chbAlsoMissingData.Checked then
                         begin
                                 ListForm.fList.Checked[b]:=False;
@@ -1097,13 +1097,13 @@ begin
                 begin
                         if sOldFile=sNewFile then
                         begin
-                                ListForm.fList.Items[b]:='{Nazwa pliku nie ulega zmianie} '+ListForm.fList.Items[b];
+                                ListForm.fList.Items[b]:='{no actual filename change} '+ListForm.fList.Items[b];
                                 ListForm.fList.Checked[b]:=False;
                                 ListForm.fList.ItemEnabled[b]:=False;
                         end
                         else
                         begin
-                                ListForm.fList.Items[b]:='{Plik o nazwie docelowej ju¿ istnieje!} '+ListForm.fList.Items[b];
+                                ListForm.fList.Items[b]:='{another file with the same name already exists} '+ListForm.fList.Items[b];
                                 ListForm.fList.Checked[b]:=False;
                                 ListForm.fList.ItemEnabled[b]:=False;
                         end;
@@ -1111,7 +1111,7 @@ begin
 
                 if FileGetAttr(mp3.FileName) and faReadOnly<>0 then
                 begin
-                        ListForm.fList.Items[b]:='{Atrybut tylko-do-odczytu!} '+ListForm.fList.Items[b];
+                        ListForm.fList.Items[b]:='{read-only file} '+ListForm.fList.Items[b];
                         ListForm.fList.Checked[b]:=False;
                         ListForm.fList.ItemEnabled[b]:=False;
                 end;
@@ -1124,7 +1124,7 @@ begin
 	mp3.Free;
         MainForm.Enabled:=True;
         pbGlobal.Position:=0;
-        lblDesc.Caption:='Gotowe...';
+        lblDesc.Caption:='Ready...';
 	Screen.Cursor:=crDefault;
 
         ListForm.pnlMode.Caption:='Test';
@@ -1136,7 +1136,7 @@ begin
         Application.ProcessMessages;
         Screen.Cursor:=crHourglass;
         MainForm.Enabled:=False;
-        lblDesc.Caption:='Automatyczna zmiana nazwy...';
+        lblDesc.Caption:='Autmatic name change...';
 
 	mp3:=TMPEGAudio.Create;
 	pbGlobal.Min := 0;
@@ -1158,7 +1158,7 @@ begin
                         sResult := '';
 
                         sGenre := mp3.GenreStr;
-                        if sGenre = 'Unknown' then sGenre := 'Nie znany';
+                        if sGenre = 'Unknown' then sGenre := '(unknown)';
                         if chbAddStyle.Checked then sResult := '[' + sGenre + '] ';
 
                         if chbDontAddArtistName.Checked then
@@ -1186,11 +1186,11 @@ begin
                         begin
                                 ListForm.fList.Checked[a]:=False;
                                 ListForm.fList.ItemEnabled[a]:=False;
-                                ListForm.fList.Items[a]:='[B£¥D! Plik o nazwie docelowej ju¿ istnieje!] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
+                                ListForm.fList.Items[a]:='[another file with the same name already exists] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
                                 CanRename:=False;
                         end;
 
-                        if ((sArtist<>'[brak danych]') and (sTitle<>'[brak danych]')) or (chbDontAddArtistName.Checked and (sTitle<>'[brak danych]')) then
+                        if ((sArtist<>'[n/a]') and (sTitle<>'[n/a]')) or (chbDontAddArtistName.Checked and (sTitle<>'[n/a]')) then
                         begin
                                 //Only mark as read-only, so user can select / deselect item on result list.
                                 ListForm.fList.ItemEnabled[a] := False;
@@ -1201,7 +1201,7 @@ begin
                                 begin
                                         ListForm.fList.Checked[a]:=False;
                                         ListForm.fList.ItemEnabled[a]:=False;
-                                        ListForm.fList.Items[a]:='[B£¥D! Brakuj¹ce dane w ID3Tag!] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
+                                        ListForm.fList.Items[a]:='[empty or invalid ID3Tag] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
                                         CanRename:=False;
                                 end;
                         end;
@@ -1210,7 +1210,7 @@ begin
                         begin
                                 ListForm.fList.Checked[a]:=False;
                                 ListForm.fList.ItemEnabled[a]:=False;
-                                ListForm.fList.Items[a]:='[B£¥D! Plik typu tylko-do-odczytu!] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
+                                ListForm.fList.Items[a]:='[read-only file] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
                                 CanRename:=False;
                         end;
 
@@ -1221,7 +1221,7 @@ begin
                                 begin
                                         ListForm.fList.Checked[a]:=False;
                                         ListForm.fList.ItemEnabled[a]:=False;
-                                        ListForm.fList.Items[a]:='[B£¥D! Zmiana nazwy nie powiod³a siê!] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
+                                        ListForm.fList.Items[a]:='[filename change has failed] '+ExtractFileName(sOldFile)+' --> '+ExtractFileName(sNewFile);
                                 end;
                         end;
 
@@ -1239,7 +1239,7 @@ begin
         mnuRefreshClick(self);
         pbGlobal.Position:=0;
         MainForm.lblGlobal.Caption:='0%';
-        lblDesc.Caption:='Gotowe...';
+        lblDesc.Caption:='Ready...';
 	Screen.Cursor:=crDefault;
 
         iChecked:=0;
@@ -1282,20 +1282,20 @@ procedure TMainForm.btnRemoveTagClick(Sender: TObject);
 var
         msg: String;
 begin
-        msg:='Plik "'+ExtractFileName(lbFiles.FileName)+'" zawiera w ID3Tag dane:'+#13#13;
-        msg:=msg+'Tytu³: '+eTitle.Text+#13;
-        msg:=msg+'Wykonawca: '+eAuthor.Text+#13;
+        msg:='File "'+ExtractFileName(lbFiles.FileName)+'" contains following data in its ID3Tag:'+#13#13;
+        msg:=msg+'Title: '+eTitle.Text+#13;
+        msg:=msg+'Artist: '+eAuthor.Text+#13;
         msg:=msg+'Album: '+eAlbum.Text+#13;
-        msg:=msg+'Rok: '+eYear.Text+#13;
-        msg:=msg+'Styl: '+cbGenreList.Text+#13;
-        msg:=msg+'Komentarz: '+eComment.Text+#13#13;
-        msg:=msg+'Usun¹æ ID3Tag z pliku?';
+        msg:=msg+'Year: '+eYear.Text+#13;
+        msg:=msg+'Genre: '+cbGenreList.Text+#13;
+        msg:=msg+'Comment: '+eComment.Text+#13#13;
+        msg:=msg+'Delete ID3Tag anyway?';
 
-        if Application.MessageBox(PChar(msg),'Potwierdzenie...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2)=ID_NO then exit;
+        if Application.MessageBox(PChar(msg),'Confirm...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2)=ID_NO then exit;
 
         mp3:=TMPEGAudio.Create;
         mp3.FileName:=lbFiles.FileName;
-        if mp3.RemoveTag<>0 then Application.MessageBox(PChar('Wyst¹pi³ b³¹d podczas próby usuniêcia ID3Tag dla pliku:'+chr(13)+lbFiles.FileName+chr(13)+'Plik mo¿e byæ zabiezpieczony przed zapisem (tylko-do-odczytu) lub uszkodzony.'),'B³¹d...',MB_OK+MB_ICONERROR+MB_DEFBUTTON2);
+        if mp3.RemoveTag<>0 then Application.MessageBox(PChar('An attempt to delete MP3Tag for '+chr(13)+lbFiles.FileName+chr(13)+chr(13)+' has failed! File may be read-only, invalid, broken or not accessible.'),'Error...',MB_OK+MB_ICONERROR+MB_DEFBUTTON2);
         mp3.Free;
 end;
 
@@ -1325,8 +1325,8 @@ var
 begin
         if (StrToIntDef((Sender as TEdit).Text,0)<1) or (StrToIntDef((Sender as TEdit).Text,0)>9999) then
         begin
-                sMess:='Wartoœæ pola "'+Copy((Sender as TEdit).Name,2,Length((Sender as TEdit).Name))+'" musi zawieraæ siê w przedziale 1-9999!';
-                Application.MessageBox(PChar(sMess),'Ostrze¿enie!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
+                sMess:='Value in field "'+Copy((Sender as TEdit).Name,2,Length((Sender as TEdit).Name))+'" must be in 1-9999 range!';
+                Application.MessageBox(PChar(sMess),'Warning!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
                 (Sender as TEdit).Text:='1';
                 (Sender as TEdit).SetFocus;
                 (Sender as TEdit).SelectAll;
@@ -1368,25 +1368,25 @@ begin
         mp3:=TMPEGAudio.Create;
         mp3.FileName:=lbFiles.FileName;
 
-        msg:='Plik: '+ExtractFileName(mp3.FileName)+#13;
-        msg:=msg+'Tytu³: '+mp3.Title+#13;
-        msg:=msg+'Wykonawca: '+mp3.Artist+#13;
+        msg:='File: '+ExtractFileName(mp3.FileName)+#13;
+        msg:=msg+'Title: '+mp3.Title+#13;
+        msg:=msg+'Artist: '+mp3.Artist+#13;
         msg:=msg+'Album: '+mp3.Album+#13;
-        msg:=msg+'Rok: '+Trim(mp3.Year)+#13;
-        msg:=msg+'Styl: '+mp3.GenreStr+#13;
-        msg:=msg+'Komentarz: '+mp3.Comment+#13;
-        msg:=msg+'Numer utworu (Track): '+IntToStr(mp3.Track)+#13;
-        msg:=msg+'D³ugoœæ: ' + FormatDateTime('hh:nn:ss', mp3.DurationTime) + ' ('+IntToStr(mp3.Duration)+' sek.)' +#13;
-        msg:=msg+'Rozmiar pliku: ' + FloatToStrF((mp3.FileLength / 1048576),ffFixed,7,2)+' MB ('+IntToStr(mp3.FileLength)+' bajtów)' + #13;
-        msg:=msg+'Wersja: '+mp3.VersionStr+#13;
-        msg:=msg+'Wersja (Layer): '+mp3.LayerStr+#13;
-        msg:=msg+'Czêstotliwoœæ samplowania: '+IntToStr(mp3.SampleRate)+#13;
-        msg:=msg+'Czêstotliwoœæ bitów: '+IntToStr(mp3.BitRate)+#13;
-        msg:=msg+'D³ugoœæ ramki: '+IntToStr(mp3.FrameLength)+#13;
-        msg:=msg+'Uderzeñ (Bit Per Minute): '+IntToStr(mp3.BPM)+#13;
-        msg:=msg+'Suma kontrolna (CRC): '+IntToStr(mp3.CRC)+#13;
+        msg:=msg+'Year: '+Trim(mp3.Year)+#13;
+        msg:=msg+'Genre: '+mp3.GenreStr+#13;
+        msg:=msg+'Comment: '+mp3.Comment+#13;
+        msg:=msg+'Track number: '+IntToStr(mp3.Track)+#13;
+        msg:=msg+'Length: ' + FormatDateTime('hh:nn:ss', mp3.DurationTime) + ' ('+IntToStr(mp3.Duration)+' sek.)' +#13;
+        msg:=msg+'Filesize: ' + FloatToStrF((mp3.FileLength / 1048576),ffFixed,7,2)+' MB ('+IntToStr(mp3.FileLength)+' bajtów)' + #13;
+        msg:=msg+'Version (key): '+mp3.VersionStr+#13;
+        msg:=msg+'Version (layer): '+mp3.LayerStr+#13;
+        msg:=msg+'Sampling rate: '+IntToStr(mp3.SampleRate)+#13;
+        msg:=msg+'Bitrate: '+IntToStr(mp3.BitRate)+#13;
+        msg:=msg+'Frame length: '+IntToStr(mp3.FrameLength)+#13;
+        msg:=msg+'BPM (Bits per Minute): '+IntToStr(mp3.BPM)+#13;
+        msg:=msg+'CRC (Control sum): '+IntToStr(mp3.CRC)+#13;
 
-        Application.MessageBox(PChar(msg),'Informacje z ID3Tag...',MB_ICONINFORMATION);
+        Application.MessageBox(PChar(msg),'ID3Tag...',MB_ICONINFORMATION);
         mp3.Free;
 end;
 
@@ -1500,7 +1500,7 @@ begin
         Application.ProcessMessages;
         Screen.Cursor:=crHourglass;
         MainForm.Enabled:=False;
-        lblStatus.Caption:='Automatyczna zmiana tagów ID3Tag...';
+        lblStatus.Caption:='Automatic change of ID3Tags...';
 
         iError := 0;
 
@@ -1555,7 +1555,7 @@ begin
                         if TagForm.chbYear.Checked then mp3.Year := TagForm.eYear.Text;
                         if TagForm.chbAlbum.Checked then mp3.Album := TagForm.eAlbum.Text;
 
-                        if TagForm.chbGenreList.Checked then if TagForm.eGenreList.Text <> '(Nie znany)' then mp3.Genre := TagForm.eGenreList.ItemIndex else mp3.Genre := 255;
+                        if TagForm.chbGenreList.Checked then if TagForm.eGenreList.Text <> '(unknown)' then mp3.Genre := TagForm.eGenreList.ItemIndex else mp3.Genre := 255;
 
                         if mp3.WriteTag <> 0 then Inc(iError);
 
@@ -1577,8 +1577,7 @@ begin
         lblStatus.Caption:='Gotowe...';
 	Screen.Cursor:=crDefault;
 
-        if iError = 1 then Application.MessageBox(PChar('W przypadku 1 pliku wyst¹pi³ b³¹d podczas próby zapisu tagów ID3Tag. Plik ten mo¿e byæ tylko do odczytu lub uszkodzony.'),'B³¹d...',MB_OK+MB_ICONERROR+MB_DEFBUTTON2);
-        if iError > 1 then Application.MessageBox(PChar('W przypadku ' + IntToStr(iError) + ' plików wyst¹pi³ b³¹d podczas próby zapisu tagów ID3Tag. Pliki te pog¹ byæ tylko do odczytu lub uszkodzone.'),'B³¹d...',MB_OK+MB_ICONERROR+MB_DEFBUTTON2);
+        if iError >= 1 then Application.MessageBox(PChar('An attempt to write ID3Tags for ' + IntToStr(iError) + ' file(s) has failed! They may be read-only, invalid, broken or not accessible.'),'Error...',MB_OK+MB_ICONERROR+MB_DEFBUTTON2);
 end;
 
 procedure TMainForm.mListDblClick(Sender: TObject);

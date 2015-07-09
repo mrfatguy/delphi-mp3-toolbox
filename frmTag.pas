@@ -91,10 +91,9 @@ begin
 
                 for a:=0 to iTotal-1 do if fList.Items[a].Checked then Inc(iChecked);
 
-                lblFolder.Caption:='Wybrany folder: '+MainForm.lbFiles.Directory;
-                lblInfo.Caption:='Wszystkich pozycji na liœcie: '+IntToStr(iTotal)+'. Wybrano do zmiany tagów ID3Tag: '+IntToStr(iChecked)+'. Liczba pozycji, które nie bêd¹ zmienione: '+IntToStr(iTotal-iChecked)+'.';
-                lblMainInfo.Caption:='Narzêdzie to mo¿na wykorzystaæ do zmiany (ujednolicenia) wartoœci w tagach ID3Tag, w wielu plikach jednoczeœnie. Zaznacz pliki, których tagi maj¹ byæ zmienione, ustal parametry oraz kliknij na klawiszu --> "Rozpocznij zmianê".';
-                btnOK.Caption:='Rozpocznij zmianê';
+                lblFolder.Caption:='Selected folder: '+MainForm.lbFiles.Directory;
+                lblInfo.Caption:='All items on the list: '+IntToStr(iTotal)+'. Items selected for ID3Tag changing: '+IntToStr(iChecked)+'. Number of items, which ID3Tags will not be changed: '+IntToStr(iTotal-iChecked)+'.';
+                lblMainInfo.Caption:='This tool can be used for batch-changing values in ID3Tags of many files in one time. Select files, which ID3Tags should be changed, set parameters and start by clicking on "Start" button.';
 
                 btnSelectAll.Show;
                 btnDeselectAll.Show;
@@ -129,14 +128,14 @@ begin
                 iTotal:=fList.Items.Count;
                 for a:=0 to iTotal-1 do if fList.Items[a].Checked then Inc(iChecked);
 
-                lblFolder.Caption:='Wybrany folder: '+MainForm.lbFiles.Directory;
-                lblMainInfo.Caption:='Poni¿sza lista zawiera wyniki przeprowadzonego procesu zmiany tagów ID3Tag. Pozycje zaznaczone zosta³y zmienione. Pozycje odznaczone - to pliki, których tagi ID3Tag z ró¿nych powodów nie mog³y zostaæ zmienione.';
-                btnOK.Caption:='Zamknij okno';
+                lblFolder.Caption:='Selected folder: '+MainForm.lbFiles.Directory;
+                lblMainInfo.Caption:='Following list contains results of batch ID3Tag changing. Checked items has their ID3Tag changed. Unchecked itmes are files, which ID3Tag was not changed (due to various reasons).';
+                btnOK.Caption:='Close window';
 
                 if iTotal=iChecked then
-                        lblInfo.Caption:='Nazwy wszystkich '+IntToStr(iTotal)+' wybranych plików zosta³y zmienione.'
+                        lblInfo.Caption:='Names of all '+IntToStr(iTotal)+' files were changed.'
                 else
-                        lblInfo.Caption:='Spoœród wszystkich '+IntToStr(iTotal)+' plików, automatyczna zmiana nazwy powiod³a siê w przypadku '+IntToStr(iChecked)+'. Pozosta³e '+IntToStr(iTotal-iChecked)+' nie zosta³y zmienione.';
+                        lblInfo.Caption:='Out of total number of '+IntToStr(iTotal)+' files, batch name change was successful for '+IntToStr(iChecked)+' files. Names of remaining '+IntToStr(iTotal-iChecked)+' files were not changed (due to various reasons).';
 
                 btnSelectAll.Hide;
                 btnDeselectAll.Hide;
@@ -149,7 +148,7 @@ end;
 
 procedure TTagForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-        MainForm.lblStatus.Caption:='Gotowe...';
+        MainForm.lblStatus.Caption:='Ready...';
         MainForm.lblProgress.Caption:='0%';
         MainForm.pbStatus.Position:=0;
 end;
@@ -193,7 +192,6 @@ procedure TTagForm.btnCloseAndEditClick(Sender: TObject);
 begin
         if fList.Selected = nil then
         begin
-                Application.MessageBox('Najpierw zaznacz na liœcie utwór, którego tagi ID3Tag chcesz edytowaæ.','Uwaga!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
                 exit;
         end;
         
@@ -207,7 +205,7 @@ end;
 
 procedure TTagForm.btnOKClick(Sender: TObject);
 begin
-        if pnlMode.Caption <> 'Result' then if Application.MessageBox('Tagi ID3Tag wszystkich zaznaczonych pozycji zostan¹ zast¹pione wartoœciami wpisanymi w pola poni¿ej listy. Czy na pewno kontynuowaæ?'+chr(13)+''+chr(13)+'Raz rozpoczêty, nie mo¿e zostaæ zatrzymany, a jego wyniki s¹ nieodwracalne.','Potwierdzenie...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2) = IDNO then exit;
+        if pnlMode.Caption <> 'Result' then if Application.MessageBox('ID3Tags of all selected files will be replaced with values entered to fields below list. Continue?'+chr(13)+''+chr(13)+'Note, that once started, this process cannot be stopped or reversed!','Confirm...',MB_YESNO+MB_ICONQUESTION+MB_DEFBUTTON2) = IDNO then exit;
         Tag := 1;
         Close;
 end;
@@ -240,11 +238,7 @@ procedure TTagForm.btnGetID3TagClick(Sender: TObject);
 var
         mp3: TMPEGAudio;
 begin
-        if fList.Selected = nil then
-        begin
-                Application.MessageBox('Najpierw zaznacz na liœcie utwór, którego tagi ID3Tag chcesz odczytaæ.','Uwaga!',MB_OK+MB_ICONWARNING+MB_DEFBUTTON1);
-                exit;
-        end;
+        if fList.Selected = nil then exit;
 
         mp3 := TMPEGAudio.Create;
         mp3.FileName := MainForm.lbFiles.Items[fList.Selected.Index];
@@ -262,9 +256,9 @@ begin
         eTrack.Text:=IntToStr(mp3.Track);
 
         if mp3.Duration < 3600 then
-                eLength.Text := FormatDateTime('nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sek.)'
+                eLength.Text := FormatDateTime('nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sec.)'
         else
-                eLength.Text := FormatDateTime('hh:nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sek.)';
+                eLength.Text := FormatDateTime('hh:nn:ss', mp3.DurationTime) + ' (' + IntToStr (mp3.Duration) + ' sec.)';
 
         mp3.Free;
 end;
@@ -274,7 +268,7 @@ var
         a: Integer;
 begin
         for a := 0 to MaxStyles do eGenreList.Items.Add(MusicStyle[a]);
-        eGenreList.Items.Add('(Nie znany)');
+        eGenreList.Items.Add('(unknown)');
 
         btnClearAllClick(self);
 end;
@@ -288,7 +282,7 @@ begin
         eGenreList.ItemIndex := eGenreList.Items.Count-1;
         eComment.Text := '';
         eTrack.Text := '';
-        eLength.Text := '00:00 (0 sek.)';
+        eLength.Text := '00:00 (0 sec.)';
 end;
 
 procedure TTagForm.CheckBoxClick(Sender: TObject);
